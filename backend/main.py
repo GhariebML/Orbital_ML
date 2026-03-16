@@ -15,12 +15,14 @@ from routers import auth, projects, ai
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     """Create database tables on startup."""
-    Base.metadata.create_all(bind=engine)
-    # Create uploads directory
+    try:
+        Base.metadata.create_all(bind=engine)
+        print("📊 Database tables maintained")
+    except Exception as e:
+        print(f"❌ Database initialization error: {e}")
+    
+    # Create uploads directory (safe for ephemeral disk)
     os.makedirs(os.path.join(os.path.dirname(__file__), "uploads"), exist_ok=True)
-    print("✨ Antigravity Backend Ready")
-    print("📊 Database tables created")
-    print("🔗 API docs at http://localhost:8000/docs")
     yield
 
 
@@ -31,14 +33,10 @@ app = FastAPI(
     lifespan=lifespan,
 )
 
-# CORS — Allow the Vite dev server
+# CORS 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:5173",
-        "http://localhost:3000",
-        "http://127.0.0.1:5173",
-    ],
+    allow_origins=["*"], # More permissive for the live deployment origin handling
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
