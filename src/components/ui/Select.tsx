@@ -1,4 +1,4 @@
-import React, { SelectHTMLAttributes } from 'react';
+import React, { type SelectHTMLAttributes } from 'react';
 import { clsx } from 'clsx';
 import { ChevronDown } from 'lucide-react';
 

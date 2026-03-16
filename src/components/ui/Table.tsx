@@ -1,4 +1,4 @@
-import React, { HTMLAttributes } from 'react';
+import React, { type HTMLAttributes } from 'react';
 import { clsx } from 'clsx';
 
 export const Table = React.forwardRef<HTMLTableElement, HTMLAttributes<HTMLTableElement>>(

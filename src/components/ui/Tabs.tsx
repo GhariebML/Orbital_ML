@@ -37,7 +37,7 @@ export const Tabs: React.FC<TabsProps> = ({ tabs, defaultTab, onChange, classNam
       </div>
       <div className="pt-4">
         {React.Children.map(children, (child) => {
-          if (React.isValidElement(child) && child.props.id === activeTab) {
+          if (React.isValidElement(child) && (child.props as any).id === activeTab) {
             return child;
           }
           return null;

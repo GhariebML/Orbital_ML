@@ -17,6 +17,7 @@ export const NewProjectPage: React.FC = () => {
   const [uploadComplete, setUploadComplete] = useState(false);
   const setCurrentProject = useProjectStore(state => state.setCurrentProject);
   const [projectId, setProjectId] = useState<number | null>(null);
+  const [targetColumn, setTargetColumn] = useState<string | undefined>(undefined);
 
   const steps = ['Upload Dataset', 'Configure Focus', 'Run Pipeline', 'Review Models', 'Deploy Endpoint'];
 
