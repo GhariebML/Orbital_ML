@@ -1,9 +1,9 @@
-
+import { Fragment } from 'react';
 import { ChevronRight, Home } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 
 
-export const Breadcrumbs: React.FC = () => {
+export const Breadcrumbs = () => {
   const location = useLocation();
   const pathnames = location.pathname.split('/').filter((x) => x);
 
@@ -25,7 +25,7 @@ export const Breadcrumbs: React.FC = () => {
         const displayName = name.charAt(0).toUpperCase() + name.slice(1);
 
         return (
-          <React.Fragment key={name}>
+          <Fragment key={name}>
             <ChevronRight className="mx-2 h-4 w-4 shrink-0 text-[#374151]" />
             {isLast ? (
               <span className="text-[#F9FAFB]" aria-current="page">
@@ -36,7 +36,7 @@ export const Breadcrumbs: React.FC = () => {
                 {displayName}
               </Link>
             )}
-          </React.Fragment>
+          </Fragment>
         );
       })}
     </nav>
