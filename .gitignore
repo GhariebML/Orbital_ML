@@ -34,3 +34,8 @@ env/
 pip-log.txt
 pip-delete-this-directory.txt
 .pytest_cache/
+.vercel
+antigravity.db
+backend/antigravity.db
+backend/uploads/*
+!backend/uploads/.gitkeep
